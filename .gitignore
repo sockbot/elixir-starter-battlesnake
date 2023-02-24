@@ -24,3 +24,6 @@ elixir_starter_battlesnake-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Ignore local vscode settings.
+/.vscode/
