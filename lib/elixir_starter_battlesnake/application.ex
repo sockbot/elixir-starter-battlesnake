@@ -11,7 +11,8 @@ defmodule ElixirStarterBattlesnake.Application do
     children = [
       # Starts a worker by calling: ElixirStarterBattlesnake.Worker.start_link(arg)
       # {ElixirStarterBattlesnake.Worker, arg}
-      {Plug.Cowboy, scheme: :http, plug: ElixirStarterBattlesnake.Router, options: [port: 8080]}
+      {Plug.Cowboy,
+       scheme: :http, plug: ElixirStarterBattlesnake.Router, options: [port: cowboy_port()]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -22,4 +23,6 @@ defmodule ElixirStarterBattlesnake.Application do
 
     Supervisor.start_link(children, opts)
   end
+
+  defp cowboy_port, do: Application.get_env(:elixir_starter_battlesnake, :cowboy_port, 8080)
 end
