@@ -12,7 +12,15 @@ defmodule RouterTest do
 
     assert conn.status == 200
 
-    assert conn.resp_body ==
-             "{\"version\":\"0.0.1-beta\",\"tail\":\"default\",\"head\":\"default\",\"color\":\"#888888\",\"author\":\"MyUsername\",\"apiversion\":\"1\"}"
+    assert JSON.decode(conn.resp_body) ==
+             {:ok,
+              %{
+                "apiversion" => "1",
+                "author" => "MyUsername",
+                "color" => "#888888",
+                "head" => "default",
+                "tail" => "default",
+                "version" => "0.0.1-beta"
+              }}
   end
 end

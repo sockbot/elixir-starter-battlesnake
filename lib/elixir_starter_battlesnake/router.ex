@@ -8,7 +8,7 @@ defmodule ElixirStarterBattlesnake.Router do
     send_resp(
       conn,
       200,
-      Poison.encode!(%{
+      JSON.encode!(%{
         apiversion: "1",
         author: "MyUsername",
         color: "#888888",
