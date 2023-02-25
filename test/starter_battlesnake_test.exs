@@ -7,8 +7,9 @@ defmodule RouterTest do
   doctest Router
 
   test "GET /" do
-    conn = conn(:get, "/")
-    conn = Router.call(conn, [])
+    conn =
+      conn(:get, "/")
+      |> Router.call([])
 
     assert conn.status == 200
 

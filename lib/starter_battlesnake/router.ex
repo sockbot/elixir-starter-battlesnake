@@ -19,27 +19,35 @@ defmodule StarterBattlesnake.Router do
         version: "0.0.1-beta"
       })
     )
+    |> halt
   end
 
   post "/start" do
-    {:ok, body, conn} = read_body(conn)
-    body |> JSON.decode!() |> Logger.info()
-    conn |> resp(200, "ok")
+    conn
+    |> register_before_send(&log_req_body/1)
+    |> resp(200, "ok")
   end
 
   post "/move" do
-    {:ok, body, conn} = read_body(conn)
-    body |> JSON.decode!() |> Logger.info()
-    conn |> resp(200, "ok")
+    conn
+    |> register_before_send(&log_req_body/1)
+    |> resp(200, "ok")
   end
 
   post "/end" do
-    {:ok, body, conn} = read_body(conn)
-    body |> JSON.decode!() |> Logger.info()
-    conn |> resp(200, "ok")
+    conn
+    |> register_before_send(&log_req_body/1)
+    |> resp(200, "ok")
   end
 
   match _ do
-    conn |> resp(404, "404 Page not found.")
+    conn
+    |> resp(404, "404 Page not found.")
+  end
+
+  defp log_req_body(conn) do
+    {:ok, body, conn} = read_body(conn)
+    body |> JSON.decode!() |> Logger.info()
+    conn
   end
 end
