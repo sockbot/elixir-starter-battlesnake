@@ -1,6 +1,7 @@
 defmodule StarterBattlesnake.Router do
   use Plug.Router
   require Logger
+  import SnakeMoves
 
   plug(:match)
   plug(:dispatch)
@@ -31,7 +32,7 @@ defmodule StarterBattlesnake.Router do
   post "/move" do
     conn
     |> register_before_send(&log_req_body/1)
-    |> resp(200, "ok")
+    |> resp(200, JSON.encode!(get_move()))
   end
 
   post "/end" do
