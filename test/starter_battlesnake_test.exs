@@ -2,7 +2,7 @@ defmodule RouterTest do
   use ExUnit.Case
   use Plug.Test
 
-  alias ElixirStarterBattlesnake.Router
+  alias StarterBattlesnake.Router
 
   doctest Router
 

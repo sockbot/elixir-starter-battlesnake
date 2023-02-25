@@ -1,4 +1,4 @@
-defmodule ElixirStarterBattlesnake.Router do
+defmodule StarterBattlesnake.Router do
   use Plug.Router
 
   plug(:match)

@@ -1,9 +1,9 @@
-defmodule ElixirStarterBattlesnake.MixProject do
+defmodule StarterBattlesnake.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :elixir_starter_battlesnake,
+      app: :starter_battlesnake,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
@@ -15,7 +15,7 @@ defmodule ElixirStarterBattlesnake.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {ElixirStarterBattlesnake.Application, []}
+      mod: {StarterBattlesnake.Application, []}
     ]
   end
 

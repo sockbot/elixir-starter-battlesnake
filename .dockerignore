@@ -24,7 +24,7 @@ doc
 **/*.ez
 
 # Ignore package tarball (built via "mix hex.build").
-**/elixir_starter_battlesnake-*.tar
+**/starter_battlesnake-*.tar
 
 # Temporary files, for example, from tests.
 tmp
