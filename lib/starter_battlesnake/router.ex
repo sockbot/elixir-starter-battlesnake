@@ -5,8 +5,8 @@ defmodule StarterBattlesnake.Router do
   plug(:dispatch)
 
   get "/" do
-    send_resp(
-      conn,
+    conn
+    |> send_resp(
       200,
       JSON.encode!(%{
         apiversion: "1",
@@ -19,7 +19,19 @@ defmodule StarterBattlesnake.Router do
     )
   end
 
+  post "/start" do
+    conn |> send_resp(200, "ok")
+  end
+
+  post "/move" do
+    conn |> send_resp(200, "ok")
+  end
+
+  post "/end" do
+    conn |> send_resp(200, "ok")
+  end
+
   match _ do
-    send_resp(conn, 404, "404 Page not found.")
+    conn |> send_resp(404, "404 Page not found.")
   end
 end
