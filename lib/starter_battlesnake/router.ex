@@ -1,8 +1,10 @@
 defmodule StarterBattlesnake.Router do
   use Plug.Router
+  require Logger
 
   plug(:match)
   plug(:dispatch)
+  plug(Plug.Logger, log: :info)
 
   get "/" do
     conn
@@ -20,18 +22,24 @@ defmodule StarterBattlesnake.Router do
   end
 
   post "/start" do
-    conn |> send_resp(200, "ok")
+    {:ok, body, conn} = read_body(conn)
+    body |> JSON.decode!() |> Logger.info()
+    conn |> resp(200, "ok")
   end
 
   post "/move" do
-    conn |> send_resp(200, "ok")
+    {:ok, body, conn} = read_body(conn)
+    body |> JSON.decode!() |> Logger.info()
+    conn |> resp(200, "ok")
   end
 
   post "/end" do
-    conn |> send_resp(200, "ok")
+    {:ok, body, conn} = read_body(conn)
+    body |> JSON.decode!() |> Logger.info()
+    conn |> resp(200, "ok")
   end
 
   match _ do
-    conn |> send_resp(404, "404 Page not found.")
+    conn |> resp(404, "404 Page not found.")
   end
 end
